@@ -35,4 +35,27 @@ var usenumbers = prompt('Would you like to include numbers?')
 // Step 5: Ask for use of special characters 
 var useSpecialChars = prompt('Would you like to include special characters in your password?') 
 
+var potentialChars = []
+
+if (useUppercase) {
+  potentialChars = potentialchars.concat(uppercase)
+}
+
+if (useLowercaase) {
+  potentialChars = potentialChars.concat(lowercase)
+} 
+
+if (usenumbers) {
+  potentialChars = potentialChars.concat(Numbers)
+} 
+
+if (useSpecialChars) {
+  potentialChars = potentialChars.concat(special)
+} 
+
+var password = ''
+for (var i = 0; i < passwordLength; i++) { 
+  password = password + potentialChars[getRandomInt (potentialChars.passwordLength)]
+}
+return password 
 }
