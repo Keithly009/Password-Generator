@@ -4,6 +4,20 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
+
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+// Need listener to generate buttons 
+
+generateBtn.addEventListener("click", writePassword); 
+
+
 // Alphabet / Numbers / Special characters
 
 const uppercase = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -11,13 +25,10 @@ const lowercase = uppercase.map(letter =>letter.toLowerCase())
 const Numbers = [0,1,2,3,4,5,6,7,8,9]
 var special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "]", "{", "}", "|", ";", ":", "'", ",", ".", "<", ">", "/", "?", "~", "`"]
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+// Need to add function for random generator 
 
-  passwordText.value = password;
-
+function getRandomInt(max) { 
+  return Math.ceil(Math.random() * max) 
 }
 
 // Add event listener to generate button
@@ -40,6 +51,13 @@ var usenumbers = confirm('Would you like to include numbers?')
 // Step 5: Ask for use of special characters 
 var useSpecialChars = confirm('Would you like to include special characters in your password?') 
 
+// If nothing is selected, the process will restart until parameters are met
+
+if (useLowercase == false && useUppercase == false && usenumbers == false && useSpecialChars === false) {
+  alert ("You must select at least one type of character for your password!") 
+  return generatePassword()
+}
+
 var potentialChars = []
 
 if (useUppercase) {
@@ -60,7 +78,7 @@ if (useSpecialChars) {
 
 var password = ''
 for (var i = 0; i < passwordLength; i++) { 
-  password = password + potentialChars[getRandomInt (potentialChars.passwordLength)]
+  password = password + potentialChars[getRandomInt (potentialChars.Length)]
 }
 return password 
 }
