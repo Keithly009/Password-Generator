@@ -26,14 +26,19 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() { 
 // Step 1: How many characters does the user want for the password 
 var passwordLength = prompt('What is the length you would like your password to be? (8-128)','12')
-// Step 2: Ask for use of uppercase 
-var useUppercase = prompt('Would you like to include uppercase letters in your password?') 
+// If they put less than 8 characters or more than 128 characters, redirect them to fix the issue 
+if (passwordLength <= 7 || passwordLength >=129) {
+  alert ("Please choose a length that fits the parameters :)")
+  return generatePassword()
+} 
+// Step 2: Ask for use of uppercase, replace prompt w/ confirm 
+var useUppercase = confirm('Would you like to include uppercase letters in your password?') 
 // Step 3: Ask for use of Lowercase 
-var useLowercaase = prompt('Would you like to include lowercase letters in your password?') 
+var useLowercaase = confirm('Would you like to include lowercase letters in your password?') 
 // Step 4: Ask for use of numbers 
-var usenumbers = prompt('Would you like to include numbers?') 
+var usenumbers = confirm('Would you like to include numbers?') 
 // Step 5: Ask for use of special characters 
-var useSpecialChars = prompt('Would you like to include special characters in your password?') 
+var useSpecialChars = confirm('Would you like to include special characters in your password?') 
 
 var potentialChars = []
 
